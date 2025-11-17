@@ -46,3 +46,12 @@ Thumbs.db
 
 # Temporary files
 /tmp/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Exports
+*.csv
+*_report.txt
