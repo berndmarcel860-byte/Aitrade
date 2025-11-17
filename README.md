@@ -215,16 +215,95 @@ The bot uses a multi-factor scoring system:
 - Ensure you've started a conversation with your bot
 - Check that chat ID is correct
 
-## 📝 TODO / Future Enhancements
+## 📝 Advanced Features (NEW!)
 
-- [ ] Backtesting module with historical data
-- [ ] Position management (auto-close, trailing stop)
-- [ ] Support for multiple timeframes
-- [ ] Machine learning price prediction
-- [ ] Web dashboard for monitoring
-- [ ] Support for other cryptocurrencies
-- [ ] Database logging of all signals
-- [ ] Performance analytics
+### ✅ Backtesting Module
+- Evaluate strategies on historical data
+- Calculate win rate, profit factor, Sharpe ratio
+- Test multiple timeframes and symbols
+- Usage: `python backtesting.py`
+
+### ✅ Position Management
+- Automatic position tracking
+- Trailing stop loss functionality
+- Partial exits at multiple TP levels
+- Real-time P&L calculations
+- Usage: See `position_manager.py`
+
+### ✅ Advanced Trading Strategies
+- **Scalping Strategy**: Quick profits with tight stops
+- **Swing Trading**: Medium-term positions
+- **Breakout Strategy**: Trade price breakouts
+- **Mean Reversion**: Profit from price extremes
+- Usage: Import from `advanced_strategies.py`
+
+### ✅ Multi-Asset Trading
+- Support for 10+ cryptocurrencies (BTC, ETH, BNB, ADA, DOGE, XRP, SOL, DOT, MATIC, LTC)
+- Multiple timeframe analysis (1m, 3m, 5m, 15m, 30m, 1h, 2h, 4h, 1d)
+- Scan all markets simultaneously
+- Rank opportunities by score
+- Usage: `python multi_asset_trader.py`
+
+### ✅ Database Logging
+- SQLite database for all signals and trades
+- Track performance over time
+- Export data to CSV
+- Query historical data
+- Usage: See `database_logger.py`
+
+### ✅ Performance Analytics
+- Comprehensive performance reports
+- Daily/weekly/monthly summaries
+- Strategy comparison analysis
+- Risk metrics (drawdown, Sharpe ratio)
+- Win rate by direction (LONG/SHORT)
+- Performance grading (A-F)
+- Usage: `python performance_analytics.py`
+
+## 🚀 Advanced Usage
+
+### Run Backtesting
+```python
+from backtesting import Backtester
+from advanced_strategies import ScalpingStrategy
+
+backtester = Backtester(strategy_class=ScalpingStrategy)
+df = backtester.fetch_historical_data('BTCUSDT', '5m', '2024-01-01')
+results = backtester.run_backtest(df, initial_capital=10000)
+backtester.print_results(results)
+```
+
+### Manage Positions
+```python
+from position_manager import PositionManager
+
+pm = PositionManager()
+pm.open_position('BTCUSDT', signal)
+pm.update_trailing_stop('BTCUSDT', current_price)
+pm.close_position('BTCUSDT', exit_price, 'Take Profit 1', 50)
+```
+
+### Multi-Asset Scanning
+```python
+from multi_asset_trader import MultiAssetTrader
+
+trader = MultiAssetTrader(
+    symbols=['BTCUSDT', 'ETHUSDT', 'BNBUSDT'],
+    timeframes=['5m', '15m', '1h']
+)
+opportunities = trader.analyze_best_opportunities()
+trader.send_best_signals(limit=3)
+```
+
+### Analyze Performance
+```python
+from performance_analytics import PerformanceAnalytics
+
+analytics = PerformanceAnalytics('trading_data.db')
+analytics.print_performance_report(days=30)
+analytics.print_daily_summary(days=7)
+analytics.analyze_strategy_performance()
+```
 
 ## 🤝 Contributing
 
